@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Direction(){
-		
+		// Comment 1
 	}
 	
 	void OnControllerColliderHit (ControllerColliderHit hit) {
