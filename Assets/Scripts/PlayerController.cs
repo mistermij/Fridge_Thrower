@@ -94,10 +94,6 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void superuselessfunction(){
-		// This is useless
-	}
-
 	void GetRekt() {
 		Debug.Log (this.isUseful);
 	}
