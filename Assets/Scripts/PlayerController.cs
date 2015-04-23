@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour {
 	
 	// Handling
 	public float speed = 5;
-	
+
+	//GlobalGit Test
+	public bool isUseful = false;
 	
 	// Components
 	private CharacterController controller;
@@ -93,6 +95,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void GetRekt() {
-		Debug.Log ("Rekt");
+		Debug.Log (this.isUseful);
 	}
 }
