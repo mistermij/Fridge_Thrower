@@ -97,6 +97,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void GetRekt() {
-		Debug.Log ("Rekt");
+		Debug.Log (this.isUseful);
 	}
 }
