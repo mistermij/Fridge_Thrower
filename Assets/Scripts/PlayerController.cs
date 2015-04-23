@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	
 	
 	void Start () {
+		Debug.Log ("It is good to write clean code.");
 		controller = GetComponent<CharacterController>();
 		animator = GetComponent<Animator> ();
 	}
