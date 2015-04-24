@@ -38,11 +38,15 @@ public class PlayerController : MonoBehaviour {
 		controller.Move(motion * Time.deltaTime);
 		
 		if (Input.GetButton("Dash")) {
+			animator.SetBool ("Holding", false);
 			dash (input);
 		}
 		else 
 			if (dashing)
 				dashReset ();
+		if (Input.GetKeyDown (KeyCode.E)) {
+			animator.SetBool ("Holding", false);
+		}
 	}
 	
 	void Direction(){
