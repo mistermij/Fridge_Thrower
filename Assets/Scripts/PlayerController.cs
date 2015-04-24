@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
 	private Animator animator;
 	
 	void Start () {
-		Debug.Log ("It is good to write clean code.");
 		controller = GetComponent<CharacterController>();
 		animator = GetComponent<Animator> ();
 	}
@@ -30,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 		controller.Move(motion * Time.deltaTime);
 		
 		if (Input.GetButton("Dash")) {
-			Debug.Log("Dashing");
 			dash (input);
 		}
 		else 
@@ -64,7 +62,6 @@ public class PlayerController : MonoBehaviour {
 	public AnimationCurve dash_curve;
 	
 	void dashReset() {
-		//Debug.Log ("reset");
 		dash_end = Time.time;
 		dashing = false;
 	}
@@ -74,7 +71,6 @@ public class PlayerController : MonoBehaviour {
 		//cooldown check
 		if (dash_cooldown + dash_end > Time.time)
 			return;
-		//Debug.Log ("vroom");
 		//start dash if it hasn't already started
 		if (!dashing) {
 			dashing = !dashing;
@@ -82,13 +78,11 @@ public class PlayerController : MonoBehaviour {
 			//Debug.Log ("start");
 		} else 
 			if (dash_start + dash_duration >= Time.time) {
-				//Debug.Log("Moving");
-				controller.Move (direction * 10 * dash_curve.Evaluate (Time.time - dash_start) * Time.deltaTime);
+				controller.Move (direction * (2*speed) * dash_curve.Evaluate (Time.time - dash_start) * Time.deltaTime);
 			}
 		else {
 			dashing = !dashing;
 			dash_end = Time.time;
-			//Debug.Log ("end");
 		}
 	}
 }
