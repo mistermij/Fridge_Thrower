@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 	// Handling
 	public float speed = 5;
 
+	private bool facingRight = true;
+
 	// Components
 	private CharacterController controller;
 	private Animator animator;
@@ -20,6 +22,13 @@ public class PlayerController : MonoBehaviour {
 		Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical"));
 		
 		animator.SetBool ("Running", input.magnitude > 0);
+
+		//Do I need to Flip ? 
+		if (input.x < 0 && facingRight) {
+			Flip ();
+		} else if (input.x > 0 && !facingRight) {
+			Flip ();
+		}
 		
 		Vector3 motion = input;
 		motion *= (Mathf.Abs(input.x) == 1 && Mathf.Abs(input.z) == 1)?.7f:1;
@@ -84,5 +93,17 @@ public class PlayerController : MonoBehaviour {
 			dashing = !dashing;
 			dash_end = Time.time;
 		}
+	}
+
+	//Flips the Sprite when changing direction
+	void Flip()
+	{
+		// Switch the way the player is labelled as facing
+		facingRight = !facingRight;
+		
+		// Multiply the player's x local scale by -1
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
