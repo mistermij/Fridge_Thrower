@@ -136,6 +136,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 482826, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -167,6 +171,50 @@ Prefab:
     - target: {fileID: 482826, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_duration
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[0].value
+      value: .996000469
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[0].inSlope
+      value: -3.03349233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[0].outSlope
+      value: -3.03349233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[0].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[1].time
+      value: .327887416
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[1].value
+      value: .00135649415
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[1].inSlope
+      value: -3.03349233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[1].outSlope
+      value: -3.03349233
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[1].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486666, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
+      propertyPath: dash_curve.m_Curve.Array.data[0].time
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9fdc65e5f322e64eafe3f33fba5c47c, type: 2}
