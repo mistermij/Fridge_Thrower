@@ -6,8 +6,14 @@ public class PlayerController : MonoBehaviour {
 	
 	// Handling
 	public float speed = 5;
+	public ThrowableObject equipedObject;
+	public Transform handlingPosition;
+	public Transform fwdPosition;
+
+	public float reachDistance;
 
 	private bool facingRight = true;
+	private bool holding = false;
 
 	// Components
 	private CharacterController controller;
@@ -37,29 +43,54 @@ public class PlayerController : MonoBehaviour {
 		
 		controller.Move(motion * Time.deltaTime);
 		
-		if (Input.GetButton("Dash")) {
-			animator.SetBool ("Holding", false);
+		//Dash
+		if (Input.GetButton("Dash") && !holding) {
 			dash (input);
 		}
 		else 
 			if (dashing)
 				dashReset ();
-		if (Input.GetKeyDown (KeyCode.E)) {
-			animator.SetBool ("Holding", false);
+
+		//PickUpObject
+		if (Input.GetButtonDown("Action") && !holding) {
+			TryGrab();
 		}
 	}
-	
-	void Direction(){
+
+	void TryGrab(){
 		
-	}
-	
-	void OnControllerColliderHit (ControllerColliderHit hit) {
-		if (hit.transform.tag == "Pickable") 
-		{
-			hit.transform.parent = this.transform;
-			hit.transform.localPosition = new Vector3 (0.015f, 0.705f, 0.541f);
-			hit.transform.rotation = Quaternion.Euler (7.531f, 356.223f, 29.632f);
-			animator.SetBool ("Holding", true);
+		RaycastHit hit;
+		Ray ray;
+
+		//RayCasting settings
+		int totalRaysY = 5;
+		int totalRaysX = 3;
+		float spreadY = 1;
+		float spreadX = 1;
+
+		for(int i=0 ; i<totalRaysX; i++){
+			for (int j=0; j<totalRaysY; j++) {
+
+				Vector3 rayPos = new Vector3(fwdPosition.position.x , 
+				                             fwdPosition.position.y - j*(spreadY/totalRaysY) , 
+				                             fwdPosition.position.z + spreadX/2 - (i+1)*(spreadX/totalRaysX));
+
+				ray =  new Ray(rayPos , fwdPosition.transform.TransformDirection (Vector3.forward) );
+
+				Debug.DrawRay (ray.origin, ray.direction, Color.green);
+			
+				if (Physics.Raycast (ray, out hit, reachDistance)) {
+					if (hit.transform.tag == "Pickable") {
+
+						//Debug.Log ("Found a pickable Object");
+						equipedObject = hit.collider.GetComponent (typeof(ThrowableObject)) as ThrowableObject;
+						equipedObject.pickUp (handlingPosition);
+
+						holding = true;
+						animator.SetBool ("Holding", true);
+					}
+				}
+			}
 		}
 	}
 	
@@ -109,5 +140,9 @@ public class PlayerController : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+
+		//Fliping forward position (den kserw gt douleuei alla douleuei)
+		fwdPosition.transform.localPosition = new Vector3(fwdPosition.transform.localPosition.x,fwdPosition.transform.localPosition.y,fwdPosition.transform.localPosition.z);
+		fwdPosition.transform.eulerAngles += 180f * Vector3.up;
 	}
 }
