@@ -19,6 +19,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &109838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475154}
+  m_Layer: 0
+  m_Name: fwdPositon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &129954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 460784}
+  m_Layer: 0
+  m_Name: HandlingPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &165502
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +65,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &460784
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129954}
+  m_LocalRotation: {x: 0, y: 0, z: .503406763, w: .864049554}
+  m_LocalPosition: {x: .312165767, y: .322287142, z: .0710000098}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 482826}
+  m_RootOrder: 1
+--- !u!4 &475154
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109838}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: .230000004, y: .209000006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 482826}
+  m_RootOrder: 2
 --- !u!4 &482826
 Transform:
   m_ObjectHideFlags: 1
@@ -42,10 +96,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .527999997, z: 0}
+  m_LocalPosition: {x: 0, y: .0240000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496994}
+  - {fileID: 460784}
+  - {fileID: 475154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &496994
@@ -89,27 +145,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  isUseful: 0
-  dash_duration: .300000012
+  equipedObject: {fileID: 0}
+  handlingPosition: {fileID: 460784}
+  fwdPosition: {fileID: 475154}
+  reachDistance: 3
+  dash_duration: .600000024
   dash_cooldown: .300000012
   dash_curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: .00625002384
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-    - time: .320347458
-      value: .767274916
-      inSlope: 1.94251537
-      outSlope: 1.94251537
-      tangentMode: 0
-    - time: .766666651
-      value: 1.01250005
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      value: .996000469
+      inSlope: -3.03349233
+      outSlope: -3.03349233
+      tangentMode: 10
+    - time: .327887416
+      value: .00135649415
+      inSlope: -3.03349233
+      outSlope: -3.03349233
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
 --- !u!119 &11992190
