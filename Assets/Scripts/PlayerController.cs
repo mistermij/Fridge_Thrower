@@ -52,8 +52,12 @@ public class PlayerController : MonoBehaviour {
 				dashReset ();
 
 		//PickUpObject
+		//TODO: dash availability while holding based on object's weight
 		if (Input.GetButtonDown("Action") && !holding) {
 			TryGrab();
+		}
+		if (Input.GetButtonDown ("Throw") && holding) {
+			Throw (input);
 		}
 	}
 
@@ -93,9 +97,22 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
-	
+
+
+	private void HoldItem() 
+	{
+		holding = true;
+		animator.SetBool ("Holding", true);
+	}
+
+	private void StopHolding() {
+		holding = false;
+		animator.SetBool("Holding",false);
+		//equipedObject = null;
+	}
 	
 	//OLH H OYSIA TOU GAME EINAI EDW
+	//TODO: dash should have a minimum duration.
 	private bool dashing = false;	//dash flag
 	private float dash_start;		//time dash started
 	private float dash_end;			//time dash stopped
@@ -142,7 +159,26 @@ public class PlayerController : MonoBehaviour {
 		transform.localScale = theScale;
 
 		//Fliping forward position (den kserw gt douleuei alla douleuei)
-		fwdPosition.transform.localPosition = new Vector3(fwdPosition.transform.localPosition.x,fwdPosition.transform.localPosition.y,fwdPosition.transform.localPosition.z);
+		//TODO:Kill the one who wrote the following statement. !important
+		//fwdPosition.transform.localPosition = new Vector3(fwdPosition.transform.localPosition.x,fwdPosition.transform.localPosition.y,fwdPosition.transform.localPosition.z);
 		fwdPosition.transform.eulerAngles += 180f * Vector3.up;
+	}
+
+	public Vector3 throw_power = new Vector3(15,3,15);
+
+	//Throw function
+	void Throw(Vector3 input){
+		//determine direction
+		float x = input.x, z=input.z;
+		if (z*x != 0) 
+		{
+			z *= .707f;
+			x *= .707f;
+		}
+
+		StopHolding ();
+		equipedObject.transform.parent = null;
+		equipedObject.SendMessage ("Throw",new Vector3(x*15,3,z*15));
+		equipedObject = null;
 	}
 }
