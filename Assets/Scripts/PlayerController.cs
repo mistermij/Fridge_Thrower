@@ -176,7 +176,10 @@ public class PlayerController : MonoBehaviour {
 			x *= .707f;
 		}
 
+		//player's side
 		StopHolding ();
+		//item's side
+		Physics.IgnoreCollision (equipedObject.transform.GetComponent<Collider> (), transform.GetComponent<Collider> ());
 		equipedObject.transform.parent = null;
 		equipedObject.SendMessage ("Throw",new Vector3(x*15,3,z*15));
 		equipedObject = null;
